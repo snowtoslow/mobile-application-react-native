@@ -56,13 +56,31 @@ const App: () => React$Node = () => {
 
 export default App;*/
 import React from 'react';
-import {StyleSheet, Text, Image, View, ImageBackground} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  Image,
+  View,
+  ImageBackground,
+  Alert,
+} from 'react-native';
+import Button from './app/components/button';
+import Center from './app/components/center';
+import Spacer from './app/components/button-spacer';
 
 export default class App extends React.Component {
+  signupPressed = () => {
+    Alert.alert('Completed Sign Up');
+  };
+
+  loginPressed = () => {
+    Alert.alert('Completed Login!');
+  };
+
   render() {
     return (
       <ImageBackground
-        source={require('./app/assets/background_number_2.jpg')}
+        source={require('./app/assets/157776694_1000124963856531_1372311273635496462_n.jpg')}
         style={styles.background}>
         <View>
           <Image
@@ -70,6 +88,25 @@ export default class App extends React.Component {
             style={styles.logo}
             resizeMode="contain"
           />
+          <Center>
+            <Button
+              text="Log in"
+              type="filled"
+              bordered
+              size="small"
+              onPress={this.loginPressed}
+            />
+          </Center>
+          <Spacer />
+          <Center>
+            <Button
+              text="Sign up"
+              type="filled"
+              bordered
+              size="small"
+              onPress={this.signupPressed}
+            />
+          </Center>
         </View>
       </ImageBackground>
     );
@@ -85,6 +122,6 @@ const styles = StyleSheet.create({
     width: 280,
     height: 280,
     marginLeft: '15%',
-    marginTop: '10%',
+    marginTop: '5%',
   },
 });
