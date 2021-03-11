@@ -4,7 +4,7 @@ import {View} from 'react-native';
 const Center = ({children}) => (
   <View
     style={{
-      alignItems: 'flex-center',
+      alignItems: 'center',
       justifyContent: 'center',
     }}>
     {children}

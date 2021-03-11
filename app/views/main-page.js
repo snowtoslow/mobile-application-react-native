@@ -1,16 +1,25 @@
 import React from 'react';
-import {StyleSheet, View, Button, ImageBackground, Image} from 'react-native';
+import {StyleSheet, View, ImageBackground, Image, Alert} from 'react-native';
+import Button from '../components/button';
 import Center from '../components/center';
 import Spacer from '../components/button-spacer';
 
 const MainPage = ({navigation}) => {
+  const signupPressed = () => {
+    Alert.alert('Completed Sign Up');
+  };
+
+  const logIn = () => {
+    navigation.navigate('LoginPage');
+  };
+
   return (
     <ImageBackground
-      source={require('./app/assets/157776694_1000124963856531_1372311273635496462_n.jpg')}
+      source={require('../assets/157776694_1000124963856531_1372311273635496462_n.jpg')}
       style={styles.background}>
       <View>
         <Image
-          source={require('./app/assets/main_text_music.png')}
+          source={require('../assets/main_text_music.png')}
           style={styles.logo}
           resizeMode="contain"
         />
@@ -20,7 +29,7 @@ const MainPage = ({navigation}) => {
             type="filled"
             bordered
             size="small"
-            onPress={this.loginPressed}
+            onPress={logIn}
           />
         </Center>
         <Spacer />
@@ -30,7 +39,7 @@ const MainPage = ({navigation}) => {
             type="filled"
             bordered
             size="small"
-            onPress={this.signupPressed}
+            onPress={signupPressed}
           />
         </Center>
       </View>

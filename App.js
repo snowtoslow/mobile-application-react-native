@@ -6,36 +6,30 @@
  * @flow strict-local
  */
 
-/*import 'react-native-gesture-handler';
+import 'react-native-gesture-handler';
 import React from 'react';
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import FirstPage from './pages/firstpage';
-import SecondPage from './pages/secondpage';
+import MainPage from './app/views/main-page';
+import LoginPage from './app/views/login-page';
+import BandsPage from './app/views/bands-page';
 
 const Stack = createStackNavigator();
 
 const App: () => React$Node = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="FirstPage">
-        <Stack.Screen
-          name="FirstPage"
-          component={FirstPage}
-          options={{
-            title: 'First Page', //Set Header Title
-            headerStyle: {
-              backgroundColor: '#f4511e', //Set Header color
-            },
-            headerTintColor: '#fff', //Set Header text color
-            headerTitleStyle: {
-              fontWeight: 'bold', //Set Header text style
-            },
-          }}
-        />
-        <Stack.Screen
+      <Stack.Navigator
+        initialRouteName="MainPage"
+        screenOptions={{
+          headerShown: false,
+        }}>
+        <Stack.Screen name="MainPage" component={MainPage} />
+        <Stack.Screen name="LoginPage" component={LoginPage} />
+        <Stack.Screen name="BandsPage" component={BandsPage} />
+        {/* <Stack.Screen
           name="SecondPage"
           component={SecondPage}
           options={{
@@ -48,14 +42,14 @@ const App: () => React$Node = () => {
               fontWeight: 'bold', //Set Header text style
             },
           }}
-        />
+        />*/}
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
 
-export default App;*/
-import React from 'react';
+export default App;
+/*import React from 'react';
 import {
   StyleSheet,
   Text,
@@ -124,4 +118,4 @@ const styles = StyleSheet.create({
     marginLeft: '15%',
     marginTop: '5%',
   },
-});
+});*/
