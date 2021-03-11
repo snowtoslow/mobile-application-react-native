@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import 'react-native-gesture-handler';
+/*import 'react-native-gesture-handler';
 import React from 'react';
 
 import {NavigationContainer} from '@react-navigation/native';
@@ -54,4 +54,37 @@ const App: () => React$Node = () => {
   );
 };
 
-export default App;
+export default App;*/
+import React from 'react';
+import {StyleSheet, Text, Image, View, ImageBackground} from 'react-native';
+
+export default class App extends React.Component {
+  render() {
+    return (
+      <ImageBackground
+        source={require('./app/assets/background_number_2.jpg')}
+        style={styles.background}>
+        <View>
+          <Image
+            source={require('./app/assets/main_text_music.png')}
+            style={styles.logo}
+            resizeMode="contain"
+          />
+        </View>
+      </ImageBackground>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  background: {
+    width: '100%',
+    height: '100%',
+  },
+  logo: {
+    width: 280,
+    height: 280,
+    marginLeft: '15%',
+    marginTop: '10%',
+  },
+});
