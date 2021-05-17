@@ -15,6 +15,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 import MainPage from './app/views/main-page';
 import LoginPage from './app/views/login-page';
 import BandsPage from './app/views/bands-page';
+import BandsViewPage from './app/views/bands-view';
+import BandsUpdatePage from './app/views/bands-update';
 
 const Stack = createStackNavigator();
 
@@ -29,6 +31,9 @@ const App: () => React$Node = () => {
         <Stack.Screen name="MainPage" component={MainPage} />
         <Stack.Screen name="LoginPage" component={LoginPage} />
         <Stack.Screen name="BandsPage" component={BandsPage} />
+        <Stack.Screen name="BandsViewPage" component={BandsViewPage} />
+        <Stack.Screen name="BandsUpdatePage" component={BandsUpdatePage} />
+
         {/* <Stack.Screen
           name="SecondPage"
           component={SecondPage}

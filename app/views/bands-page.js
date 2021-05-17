@@ -1,136 +1,65 @@
-/*import React from 'react';*/
-import {Alert} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {ActivityIndicator, FlatList, Text, View} from 'react-native';
+import Button from '../components/button';
+import Right from '../components/left';
 
-/*const BandsPage = ({route, navigation}) => {
-  return <Text>Blea ba amush o sa vezi bandurile noastre!</Text>;
-};
+const BandsPage = ({navigation}) => {
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
+  const [selectedItem, setSelectedItem] = useState({});
 
-export default BandsPage;*/
-
-import React, {Component} from 'react';
-import {View, Text, FlatList, ActivityIndicator} from 'react-native';
-import {ListItem, SearchBar} from 'react-native-elements';
-
-class BandsPage extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      loading: false,
-      data: [],
-      page: 1,
-      seed: 1,
-      error: null,
-      refreshing: false,
-    };
-  }
-
-  componentDidMount() {
-    this.makeRemoteRequest();
-  }
-
-  makeRemoteRequest = () => {
-    const {page, seed} = this.state;
-    const url = `https://randomuser.me/api/?seed=${seed}&page=${page}&results=20`;
-    this.setState({loading: true});
-
-    fetch(url)
-      .then((res) => res.json())
-      .then((res) => {
-        this.setState({
-          data: page === 1 ? res.results : [...this.state.data, ...res.results],
-          error: res.error || null,
-          loading: false,
-          refreshing: false,
-        });
-      })
-      .catch((error) => {
-        this.setState({error, loading: false});
-      });
-  };
-
-  handleRefresh = () => {
-    this.setState(
-      {
-        page: 1,
-        seed: this.state.seed + 1,
-        refreshing: true,
-      },
-      () => {
-        this.makeRemoteRequest();
-      },
-    );
-  };
-
-  handleLoadMore = () => {
-    this.setState(
-      {
-        page: this.state.page + 1,
-      },
-      () => {
-        this.makeRemoteRequest();
-      },
-    );
-  };
-
-  renderSeparator = () => {
-    return (
-      <View
-        style={{
-          height: 1,
-          width: '86%',
-          backgroundColor: '#CED0CE',
-          marginLeft: '14%',
-        }}
-      />
-    );
-  };
-
-  renderHeader = () => {
-    return <SearchBar placeholder="Type Here..." lightTheme round />;
-  };
-
-  renderFooter = () => {
-    if (!this.state.loading) {
-      return null;
+  const getBandsFromApiAsync = async () => {
+    try {
+      let response = await fetch(
+        'https://us-central1-bandsproject-d33f4.cloudfunctions.net/GetBands',
+      );
+      return await response.json();
+    } catch (error) {
+      console.error(error);
     }
-
-    return (
-      <View
-        style={{
-          paddingVertical: 20,
-          borderTopWidth: 1,
-          borderColor: '#CED0CE',
-        }}>
-        <ActivityIndicator animating size="large" />
-      </View>
-    );
   };
 
-  render() {
-    return (
-      <FlatList
-        data={this.state.data}
-        renderItem={({item}) => (
-          <ListItem
-            roundAvatar
-            title={`${item.name.first} ${item.name.last}`}
-            subtitle={item.email}
-            avatar={{uri: item.picture.thumbnail}}
-            containerStyle={{borderBottomWidth: 0}}
-          />
-        )}
-        keyExtractor={(item) => item.email}
-        ItemSeparatorComponent={this.renderSeparator}
-        ListHeaderComponent={this.renderHeader}
-        ListFooterComponent={this.renderFooter}
-        onRefresh={this.handleRefresh}
-        refreshing={this.state.refreshing}
-        onEndReached={this.handleLoadMore}
-        onEndReachedThreshold={50}
-      />
-    );
-  }
-}
+  useEffect(() => {
+    getBandsFromApiAsync().then((res) => {
+      console.log(res);
+      setData(res);
+      setLoading(false);
+    });
+  }, []);
+
+  return (
+    <View style={{flex: 1, padding: 24}}>
+      {isLoading ? (
+        <ActivityIndicator />
+      ) : (
+        <FlatList
+          data={data}
+          keyExtractor={({item}) => data[item]}
+          renderItem={({item}) => (
+            <View>
+              <Text>{item.name}</Text>
+              <Right>
+                <View style={{marginTop: 70}}>
+                  <Button
+                    text="view"
+                    type="filled"
+                    bordered
+                    size="small"
+                    onPress={() => {
+                      setSelectedItem(item);
+                      navigation.navigate('BandsViewPage', {
+                        dataForView: selectedItem,
+                      });
+                    }}
+                  />
+                </View>
+              </Right>
+            </View>
+          )}
+        />
+      )}
+    </View>
+  );
+};
 
 export default BandsPage;
