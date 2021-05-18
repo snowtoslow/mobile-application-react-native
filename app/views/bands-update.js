@@ -124,7 +124,7 @@ const BandsUpdatePage = ({navigation, route}) => {
             <TextInput
               value={language}
               style={styles.TextInput}
-              placeholder="Label"
+              placeholder="Language"
               placeholderTextColor="#003f5c"
               onChangeText={(language) => setLanguage(language)}
             />

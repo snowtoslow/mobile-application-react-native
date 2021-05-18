@@ -17,6 +17,7 @@ import LoginPage from './app/views/login-page';
 import BandsPage from './app/views/bands-page';
 import BandsViewPage from './app/views/bands-view';
 import BandsUpdatePage from './app/views/bands-update';
+import BandsCreatePage from './app/views/bands-create-view';
 
 const Stack = createStackNavigator();
 
@@ -33,6 +34,7 @@ const App: () => React$Node = () => {
         <Stack.Screen name="BandsPage" component={BandsPage} />
         <Stack.Screen name="BandsViewPage" component={BandsViewPage} />
         <Stack.Screen name="BandsUpdatePage" component={BandsUpdatePage} />
+        <Stack.Screen name="BandsCreatePage" component={BandsCreatePage} />
 
         {/* <Stack.Screen
           name="SecondPage"

@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {ActivityIndicator, FlatList, Text, View} from 'react-native';
 import Button from '../components/button';
 import Right from '../components/left';
+import Center from '../components/center';
 
 const BandsPage = ({navigation}) => {
   const [isLoading, setLoading] = useState(true);
@@ -39,9 +40,9 @@ const BandsPage = ({navigation}) => {
             <View>
               <Text>{item.name}</Text>
               <Right>
-                <View style={{marginTop: 70}}>
+                <View>
                   <Button
-                    text="view"
+                    text="View"
                     type="filled"
                     bordered
                     size="small"
@@ -58,6 +59,19 @@ const BandsPage = ({navigation}) => {
           )}
         />
       )}
+      <View>
+        <Center>
+          <Button
+            text="Create"
+            type="filled"
+            bordered
+            size="small"
+            onPress={() => {
+              navigation.navigate('BandsCreatePage');
+            }}
+          />
+        </Center>
+      </View>
     </View>
   );
 };
