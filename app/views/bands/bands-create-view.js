@@ -1,30 +1,29 @@
-import {ImageBackground, StyleSheet, Text, TextInput, View} from 'react-native';
-import Center from '../components/center';
-import Button from '../components/button';
+import {ImageBackground, StyleSheet, TextInput, View} from 'react-native';
+import Center from '../../components/center';
+import Button from '../../components/button';
 import React, {useState} from 'react';
 
-const BandsUpdatePage = ({navigation, route}) => {
-  const dataToUpdate = route.params.dataToUpdate;
-  const id = dataToUpdate.id;
-  const [name, setName] = useState(dataToUpdate.name);
-  const [genres, setGenres] = useState(dataToUpdate.genres);
-  const [placeOfCreation, setPlaceOfCreation] = useState(
-    dataToUpdate.place_of_creation,
-  );
-  const [label, setLabel] = useState(dataToUpdate.label);
-  const [language, setLanguage] = useState(dataToUpdate.language);
+const BandsCreatePage = ({navigation}) => {
+  const [name, setName] = useState('');
+  const [genres, setGenres] = useState('');
+  const [placeOfCreation, setPlaceOfCreation] = useState('');
+  const [label, setLabel] = useState('');
+  const [language, setLanguage] = useState('');
 
-  const update = () => {
+  const goBack = () => {
+    navigation.navigate('BandsPage');
+  };
+
+  const create = () => {
     fetch(
-      'https://us-central1-bandsproject-d33f4.cloudfunctions.net/UpdateBand',
+      'https://us-central1-bandsproject-d33f4.cloudfunctions.net/CreateBand',
       {
-        method: 'PUT',
+        method: 'POST',
         headers: {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          id: id,
           name: name,
           label: label,
           genres: genres,
@@ -36,21 +35,17 @@ const BandsUpdatePage = ({navigation, route}) => {
     navigation.navigate('BandsPage');
   };
 
-  const back = () => {
-    navigation.navigate('BandsViewPage');
-  };
-
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require('../assets/157776694_1000124963856531_1372311273635496462_n.jpg')}
+        source={require('../../assets/157776694_1000124963856531_1372311273635496462_n.jpg')}
         style={styles.background}>
         <Center>
           <View style={styles.inputView}>
             <TextInput
               value={name}
               style={styles.TextInput}
-              placeholder="Email"
+              placeholder="Name"
               placeholderTextColor="#003f5c"
               onChangeText={(name) => setName(name)}
             />
@@ -133,11 +128,11 @@ const BandsUpdatePage = ({navigation, route}) => {
         <Center>
           <View style={{marginTop: 50}}>
             <Button
-              text="Update"
+              text="Create"
               type="filled"
               bordered
               size="small"
-              onPress={update}
+              onPress={create}
             />
           </View>
         </Center>
@@ -148,7 +143,7 @@ const BandsUpdatePage = ({navigation, route}) => {
               type="filled"
               bordered
               size="small"
-              onPress={back}
+              onPress={goBack}
             />
           </View>
         </Center>
@@ -203,5 +198,4 @@ const styles = StyleSheet.create({
     backgroundColor: '#FF1493',
   },
 });
-
-export default BandsUpdatePage;
+export default BandsCreatePage;

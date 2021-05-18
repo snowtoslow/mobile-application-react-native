@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {ActivityIndicator, FlatList, Text, View} from 'react-native';
-import Button from '../components/button';
-import Right from '../components/left';
-import Center from '../components/center';
+import Button from '../../components/button';
+import Right from '../../components/left';
+import Center from '../../components/center';
 
 const BandsPage = ({navigation}) => {
   const [isLoading, setLoading] = useState(true);

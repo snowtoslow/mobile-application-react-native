@@ -12,12 +12,12 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
-import MainPage from './app/views/main-page';
-import LoginPage from './app/views/login-page';
-import BandsPage from './app/views/bands-page';
-import BandsViewPage from './app/views/bands-view';
-import BandsUpdatePage from './app/views/bands-update';
-import BandsCreatePage from './app/views/bands-create-view';
+import MainPage from './app/views/main/main-page';
+import LoginPage from './app/views/login/login-page';
+import BandsPage from './app/views/bands/bands-page';
+import BandsViewPage from './app/views/bands/bands-view';
+import BandsUpdatePage from './app/views/bands/bands-update';
+import BandsCreatePage from './app/views/bands/bands-create-view';
 
 const Stack = createStackNavigator();
 

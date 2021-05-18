@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {StyleSheet, View, ImageBackground, Alert} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
-import Center from '../components/center';
-import Button from '../components/button';
-import Constant from '../components/constant';
+import Center from '../../components/center';
+import Button from '../../components/button';
+import Constant from '../../components/constant';
 
 const LoginPage = ({navigation}) => {
   const [email, setEmail] = useState('');
@@ -21,7 +21,7 @@ const LoginPage = ({navigation}) => {
   return (
     <View style={styles.container}>
       <ImageBackground
-        source={require('../assets/157776694_1000124963856531_1372311273635496462_n.jpg')}
+        source={require('../../assets/157776694_1000124963856531_1372311273635496462_n.jpg')}
         style={styles.background}>
         <Center>
           <View style={styles.inputView}>

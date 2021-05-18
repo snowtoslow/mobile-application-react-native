@@ -1,8 +1,8 @@
 import React from 'react';
 import {StyleSheet, View, ImageBackground, Image, Alert} from 'react-native';
-import Button from '../components/button';
-import Center from '../components/center';
-import Spacer from '../components/button-spacer';
+import Button from '../../components/button';
+import Center from '../../components/center';
+import Spacer from '../../components/button-spacer';
 
 const MainPage = ({navigation}) => {
   const signupPressed = () => {
@@ -15,11 +15,11 @@ const MainPage = ({navigation}) => {
 
   return (
     <ImageBackground
-      source={require('../assets/157776694_1000124963856531_1372311273635496462_n.jpg')}
+      source={require('../../assets/157776694_1000124963856531_1372311273635496462_n.jpg')}
       style={styles.background}>
       <View>
         <Image
-          source={require('../assets/main_text_music.png')}
+          source={require('../../assets/main_text_music.png')}
           style={styles.logo}
           resizeMode="contain"
         />

@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import Button from '../components/button';
-import Center from '../components/center';
+import Button from '../../components/button';
+import Center from '../../components/center';
 
 const BandsViewPage = ({navigation, route}) => {
   const dataToDisplay = route.params.dataForView;
