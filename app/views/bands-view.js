@@ -16,11 +16,13 @@ const BandsViewPage = ({navigation, route}) => {
 
   return (
     <View style={{flex: 1, padding: 24}}>
-      <Text>{dataToDisplay.name}</Text>
-      <Text>{dataToDisplay.genres}</Text>
-      <Text>{dataToDisplay.place_of_creation}</Text>
-      <Text>{dataToDisplay.label}</Text>
-      <Text>{dataToDisplay.language}</Text>
+      <Text key={dataToDisplay.name}>{dataToDisplay.name}</Text>
+      <Text key={dataToDisplay.genres}>{dataToDisplay.genres}</Text>
+      <Text key={dataToDisplay.place_of_creation}>
+        {dataToDisplay.place_of_creation}
+      </Text>
+      <Text key={dataToDisplay.label}>{dataToDisplay.label}</Text>
+      <Text key={dataToDisplay.language}>{dataToDisplay.language}</Text>
       <Center>
         <View style={{marginTop: 70}}>
           <Button
